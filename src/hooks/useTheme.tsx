@@ -15,19 +15,23 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 type ThemeProviderProps = {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | null;
 };
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<ThemeType>("dark");
+  const [theme, setTheme] = useState<ThemeType>(
+    (localStorage.getItem("mode") as ThemeType) || "dark"
+  );
 
   useEffect(() => {
     const body = document.documentElement;
+
     body.classList.remove("dark", "light");
-    if (theme === "dark") body.classList.add("dark");
-    else body.classList.add("light");
+    body.classList.add(theme);
+    localStorage.setItem("mode", theme);
+
     body.style.color = theme === "light" ? "black" : "white";
-    body.style.background = theme === "light" ? "white" : "black";
+    body.style.backgroundColor = theme === "light" ? "white" : "black";
   }, [theme]);
 
   return (

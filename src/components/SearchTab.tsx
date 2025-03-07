@@ -71,7 +71,7 @@ export default function SearchTab() {
               name="searchType"
               id={id}
               data-value={value}
-              defaultChecked={id === "movie-bulk"}
+              defaultChecked={id === searchType}
             />
             <p>{label}</p>
           </label>
@@ -80,6 +80,7 @@ export default function SearchTab() {
 
     <div className={`relative w-fit mt-2`}>
       <input
+        autofocus
         type="text"
         value={query}
         onChange={(e) => setQuery(e.currentTarget.value)}

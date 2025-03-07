@@ -71,8 +71,8 @@ export default function Bulk() {
         <div 
           key={movie.imdbID}
           onClick={() => {
-            setSearchType("movie-id")
-            setSearchQuery(movie.imdbID)
+            setSearchType("movie-title")
+            setSearchQuery(movie.Title)
           }}
           className="aspect-[2/3] relative bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden"
         >

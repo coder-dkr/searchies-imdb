@@ -32,11 +32,11 @@ class OMDB {
       }
     }
 
-    async searchByRandom(query: string) {
+    async searchByRandom(query: string,pagenum : number) {
       try {
         if (!this.API_KEY) throw new Error('API Key is missing');
   
-        const response = await fetch(`${this.BASE_URL}/?s=${query}&apikey=${this.API_KEY}`);
+        const response = await fetch(`${this.BASE_URL}/?s=${query}&page=${pagenum}&apikey=${this.API_KEY}`);
         if (!response.ok) throw new Error('Failed to fetch data');
   
         const data = await response.json();

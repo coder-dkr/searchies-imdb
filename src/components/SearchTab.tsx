@@ -3,7 +3,7 @@ import { useSearch, type SearchType } from "../hooks/useSearch";
 import { Search } from "lucide-react";
 
 export default function SearchTab() {
-  const { searchType, setSearchType  , setSearchQuery , setShowresults  } = useSearch();
+  const { searchType, setSearchType , setSearchQuery , searchQuery, setShowresults  } = useSearch();
   const [placeholder, setPlaceholder] = useState("");
   const [query, setQuery] = useState<string>("");
 
@@ -25,6 +25,13 @@ export default function SearchTab() {
     setPlaceholder(selectedInput?.dataset.value || "");
   }, [searchType]);
 
+  useEffect(() => {
+    const selectedInput = document.querySelector<HTMLInputElement>(
+      `input[type=radio][id="${searchType}"]`
+    );
+    // selectedInput.check
+  }, [searchType]);
+
   const GoSearch = () => {
     if(query === "" ) {
       alert("Enter something!");
@@ -33,6 +40,10 @@ export default function SearchTab() {
     setSearchQuery(query)
     setShowresults(true)
   }
+
+  useEffect(() => {
+    setQuery(searchQuery)
+  } , [searchQuery])
 
   useEffect(() => {
     if(query.trim() === ""){

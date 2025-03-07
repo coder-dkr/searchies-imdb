@@ -25,13 +25,6 @@ export default function SearchTab() {
     setPlaceholder(selectedInput?.dataset.value || "");
   }, [searchType]);
 
-  useEffect(() => {
-    const selectedInput = document.querySelector<HTMLInputElement>(
-      `input[type=radio][id="${searchType}"]`
-    );
-    // selectedInput.check
-  }, [searchType]);
-
   const GoSearch = () => {
     if(query === "" ) {
       alert("Enter something!");

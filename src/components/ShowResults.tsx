@@ -6,7 +6,7 @@ export default function ShowResults() {
   const { searchType, searchQuery , showresults } = useSearch();
 
   if  (searchQuery.trim() === "" || !showresults) {
-    return <div>Search Something</div>;
+    return <div>Search Something...</div>;
   }
 
   const RenderedComponent = useMemo(() => {
